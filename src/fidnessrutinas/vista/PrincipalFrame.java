@@ -76,7 +76,10 @@ public class PrincipalFrame extends JFrame {
         JButton btnFiltrar = new JButton("Filtrar");
         btnFiltrar.addActionListener(event -> filtrar());
         JButton btnTodos = new JButton("Ver todos");
-        btnTodos.addActionListener(event -> cargarEjercicios());
+        btnTodos.addActionListener(event -> {
+            cboCategoria.setSelectedItem("TODAS");
+            cargarEjercicios();
+        });
         JButton btnAgregar = new JButton("Agregar a rutina");
         btnAgregar.addActionListener(event -> agregarSeleccionARutina());
 
