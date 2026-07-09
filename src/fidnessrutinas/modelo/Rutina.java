@@ -41,7 +41,12 @@ public class Rutina implements Exportable, Serializable {
     }
 
     public void eliminarEjercicio(int idEjercicio) {
-        ejercicios.removeIf(ejercicio -> ejercicio.getId() == idEjercicio);
+        for (int i = 0; i < ejercicios.size(); i++) {
+            if (ejercicios.get(i).getId() == idEjercicio) {
+                ejercicios.remove(i);
+                return;
+            }
+        }
     }
 
     @Override

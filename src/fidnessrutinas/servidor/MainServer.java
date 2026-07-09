@@ -16,7 +16,12 @@ public class MainServer {
         if (iniciado) {
             return;
         }
-        Thread hiloServidor = new Thread(MainServer::iniciar, "fidness-servidor");
+        Thread hiloServidor = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                iniciar();
+            }
+        }, "fidness-servidor");
         hiloServidor.setDaemon(true);
         hiloServidor.start();
         iniciado = true;

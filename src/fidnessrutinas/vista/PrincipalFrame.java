@@ -9,6 +9,8 @@ import fidnessrutinas.modelo.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
@@ -21,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -74,14 +78,11 @@ public class PrincipalFrame extends JFrame {
             cboCategoria.addItem(categoria.name());
         }
         JButton btnFiltrar = new JButton("Filtrar");
-        btnFiltrar.addActionListener(event -> filtrar());
+        btnFiltrar.addActionListener(new FiltrarListener());
         JButton btnTodos = new JButton("Ver todos");
-        btnTodos.addActionListener(event -> {
-            cboCategoria.setSelectedItem("TODAS");
-            cargarEjercicios();
-        });
+        btnTodos.addActionListener(new VerTodosListener());
         JButton btnAgregar = new JButton("Agregar a rutina");
-        btnAgregar.addActionListener(event -> agregarSeleccionARutina());
+        btnAgregar.addActionListener(new AgregarRutinaListener());
 
         panel.add(cboCategoria);
         panel.add(btnFiltrar);
@@ -92,7 +93,7 @@ public class PrincipalFrame extends JFrame {
 
     private JSplitPane crearPanelCentral() {
         tablaEjercicios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        tablaEjercicios.getSelectionModel().addListSelectionListener(event -> mostrarDetalleSeleccionado());
+        tablaEjercicios.getSelectionModel().addListSelectionListener(new SeleccionEjercicioListener());
         JScrollPane scrollTabla = new JScrollPane(tablaEjercicios);
         scrollTabla.setPreferredSize(new Dimension(560, 420));
 
@@ -188,5 +189,40 @@ public class PrincipalFrame extends JFrame {
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "FidnessRutinas",
                 JOptionPane.WARNING_MESSAGE);
+    }
+
+    private class FiltrarListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            filtrar();
+        }
+    }
+
+    private class VerTodosListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            cboCategoria.setSelectedItem("TODAS");
+            cargarEjercicios();
+        }
+    }
+
+    private class AgregarRutinaListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            agregarSeleccionARutina();
+        }
+    }
+
+    private class SeleccionEjercicioListener implements ListSelectionListener {
+
+        @Override
+        public void valueChanged(ListSelectionEvent event) {
+            if (!event.getValueIsAdjusting()) {
+                mostrarDetalleSeleccionado();
+            }
+        }
     }
 }

@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -53,7 +55,7 @@ public class LoginFrame extends JFrame {
         panel.add(txtContrasena, gbc);
 
         JButton btnIngresar = new JButton("Ingresar");
-        btnIngresar.addActionListener(event -> ingresar());
+        btnIngresar.addActionListener(new IngresarListener());
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
@@ -72,6 +74,14 @@ public class LoginFrame extends JFrame {
         } catch (DatoInvalidoException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(),
                     "No se pudo ingresar", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private class IngresarListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            ingresar();
         }
     }
 }
