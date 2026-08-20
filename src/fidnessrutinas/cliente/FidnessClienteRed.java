@@ -45,10 +45,26 @@ public class FidnessClienteRed {
         return (Rutina) enviar(solicitud).getDatos();
     }
 
+    public Rutina eliminarDeRutina(String usuario, int idEjercicio)
+            throws DatoInvalidoException {
+        Solicitud solicitud = new Solicitud(Operacion.ELIMINAR_DE_RUTINA)
+                .agregarDato("usuario", usuario)
+                .agregarDato("idEjercicio", idEjercicio);
+        return (Rutina) enviar(solicitud).getDatos();
+    }
+
     public Rutina obtenerRutina(String usuario) throws DatoInvalidoException {
         Solicitud solicitud = new Solicitud(Operacion.OBTENER_RUTINA)
                 .agregarDato("usuario", usuario);
         return (Rutina) enviar(solicitud).getDatos();
+    }
+
+    public void registrarEjercicio(String administrador, Ejercicio ejercicio)
+            throws DatoInvalidoException {
+        Solicitud solicitud = new Solicitud(Operacion.REGISTRAR_EJERCICIO)
+                .agregarDato("administrador", administrador)
+                .agregarDato("ejercicio", ejercicio);
+        enviar(solicitud);
     }
 
     private Respuesta enviar(Solicitud solicitud) throws DatoInvalidoException {

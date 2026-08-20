@@ -3,6 +3,8 @@ dist/
 nbproject/private/
 *.class
 *.jar
+!lib/
+!lib/mysql-connector-j-9.7.0.jar
 *.war
 *.ear
 *.log

@@ -57,9 +57,19 @@ public class ClientHandler implements Runnable {
                             gestionRutinas.agregarEjercicioARutina(
                                     (String) solicitud.obtenerDato("usuario"),
                                     (Integer) solicitud.obtenerDato("idEjercicio")));
+                case ELIMINAR_DE_RUTINA:
+                    return Respuesta.ok("Ejercicio eliminado",
+                            gestionRutinas.eliminarEjercicioDeRutina(
+                                    (String) solicitud.obtenerDato("usuario"),
+                                    (Integer) solicitud.obtenerDato("idEjercicio")));
                 case OBTENER_RUTINA:
                     return Respuesta.ok("Rutina actual",
                             gestionRutinas.obtenerRutina((String) solicitud.obtenerDato("usuario")));
+                case REGISTRAR_EJERCICIO:
+                    gestionRutinas.registrarEjercicio(
+                            (String) solicitud.obtenerDato("administrador"),
+                            (fidnessrutinas.modelo.Ejercicio) solicitud.obtenerDato("ejercicio"));
+                    return Respuesta.ok("Ejercicio registrado", null);
                 default:
                     return Respuesta.error("Operacion no soportada.");
             }

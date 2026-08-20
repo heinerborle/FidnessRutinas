@@ -1,0 +1,3 @@
+url=jdbc:mysql://127.0.0.1:3306/fidness_rutinas?serverTimezone=America/Costa_Rica&useSSL=false&allowPublicKeyRetrieval=true
+usuario=fidness_app
+contrasena=CAMBIAR_EN_ARCHIVO_PRIVADO

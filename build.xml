@@ -10,6 +10,11 @@
 <project name="FidnessRutinas" default="default" basedir=".">
     <description>Builds, tests, and runs the project FidnessRutinas.</description>
     <import file="nbproject/build-impl.xml"/>
+    <target name="-post-jar">
+        <mkdir dir="${dist.dir}/lib"/>
+        <copy file="${file.reference.mysql-connector-j-9.7.0.jar}"
+              todir="${dist.dir}/lib"/>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 

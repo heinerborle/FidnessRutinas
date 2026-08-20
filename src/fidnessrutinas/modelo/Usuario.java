@@ -10,12 +10,19 @@ public class Usuario implements Serializable {
     private String nombreCompleto;
     private String nombreUsuario;
     private String contrasena;
+    private boolean administrador;
 
     public Usuario(int id, String nombreCompleto, String nombreUsuario, String contrasena) {
+        this(id, nombreCompleto, nombreUsuario, contrasena, false);
+    }
+
+    public Usuario(int id, String nombreCompleto, String nombreUsuario,
+            String contrasena, boolean administrador) {
         this.id = id;
         this.nombreCompleto = nombreCompleto;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
+        this.administrador = administrador;
     }
 
     public int getId() {
@@ -48,5 +55,13 @@ public class Usuario implements Serializable {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public boolean isAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(boolean administrador) {
+        this.administrador = administrador;
     }
 }

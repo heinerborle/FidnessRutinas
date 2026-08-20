@@ -1,0 +1,68 @@
+FIDNESSRUTINAS - INSTRUCCIONES DE USO
+====================================
+
+REQUISITOS
+----------
+1. Apache NetBeans.
+2. JDK 26.
+3. MySQL Server en ejecución.
+
+ABRIR EL PROYECTO EN NETBEANS
+-----------------------------
+1. Descomprima el archivo del proyecto.
+2. Abra NetBeans.
+3. Seleccione File > Open Project.
+4. Seleccione la carpeta FidnessRutinas.
+
+PREPARAR MYSQL
+--------------
+1. Abra MySQL Workbench o el cliente de MySQL.
+2. Ejecute el archivo database/schema.sql.
+3. Copie database.properties.example a esta ruta:
+
+   nbproject/private/database.properties
+
+4. Abra el archivo copiado y cambie usuario y contrasena por las
+   credenciales de su MySQL local.
+5. No elimine la propiedad url.
+
+EJECUTAR DESDE NETBEANS
+-----------------------
+1. Presione Clean and Build Project.
+2. Cuando aparezca BUILD SUCCESSFUL, presione Run Project.
+3. La aplicacion inicia el servidor local en el puerto 5050 y luego
+   muestra la ventana de ingreso.
+
+EJECUTAR EL PAQUETE COMPILADO
+-----------------------------
+1. Complete primero la preparacion de MySQL y el archivo privado.
+2. Abra una terminal en la carpeta descomprimida.
+3. Ejecute:
+
+   java -jar dist/FidnessRutinas.jar
+
+USUARIOS DE PRUEBA
+------------------
+Usuario regular:
+  usuario: heiner
+  contrasena: 1234
+
+Usuario administrador:
+  usuario: admin
+  contrasena: admin
+
+FUNCIONES PRINCIPALES
+---------------------
+- Consultar y filtrar ejercicios.
+- Ver el detalle de cada ejercicio.
+- Agregar y eliminar ejercicios de la rutina.
+- Exportar el resumen de la rutina a un archivo TXT.
+- Registrar ejercicios con el usuario administrador.
+- Conservar el catalogo y las rutinas en MySQL.
+
+NOTAS
+-----
+- El conector MySQL ya se incluye en lib y dist/lib.
+- La aplicacion crea los datos iniciales si las tablas estan vacias.
+- Las credenciales privadas de MySQL no se incluyen en el repositorio.
+- Si el puerto 5050 esta ocupado, cierre la otra instancia antes de iniciar.
