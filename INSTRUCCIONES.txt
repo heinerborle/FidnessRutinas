@@ -1,63 +1,6 @@
 FIDNESSRUTINAS - INSTRUCCIONES DE USO
 ====================================
 
-ARCHIVOS PREPARADOS PARA SUBIR
-------------------------------
-Las siguientes rutas parten de la carpeta Entrega Final de este trabajo:
-
-1. Documento escrito:
-
-   salida/Proyecto FidnessRutinas - Heiner Borbon Leon.docx
-
-2. Proyecto completo para abrir en NetBeans o ejecutar directamente:
-
-   salida/codigo/FidnessRutinas-Proyecto-Completo.zip
-
-Este unico ZIP contiene tanto el proyecto importable de NetBeans como el
-ejecutable compilado. No es necesario subir dos paquetes de codigo.
-INSTRUCCIONES.txt ya esta incluido dentro del ZIP.
-
-No se debe subir nbproject/private/database.properties porque contiene las
-credenciales privadas de MySQL de la computadora donde se ejecuta el
-programa. Cada persona crea su propia copia siguiendo esta guia.
-
-COMO INTERPRETAR LAS RUTAS DE ESTA GUIA
----------------------------------------
-Todas las rutas indicadas desde la seccion REQUISITOS parten de la carpeta
-principal del proyecto descomprimido. Por ejemplo:
-
-   database/schema.sql
-
-significa entrar primero a FidnessRutinas, despues a database y finalmente
-abrir schema.sql. En la copia de trabajo de este equipo, la ruta es:
-
-   codigo/FidnessRutinas/database/schema.sql
-
-Al descomprimir FidnessRutinas-Proyecto-Completo.zip se obtiene esta
-estructura:
-
-   FidnessRutinas/
-   |-- build.xml
-   |-- manifest.mf
-   |-- INSTRUCCIONES.txt
-   |-- database.properties.example
-   |-- database/
-   |   `-- schema.sql
-   |-- dist/
-   |   |-- FidnessRutinas.jar
-   |   `-- lib/mysql-connector-j-9.7.0.jar
-   |-- lib/
-   |   `-- mysql-connector-j-9.7.0.jar
-   |-- nbproject/
-   |   |-- project.xml
-   |   `-- project.properties
-   `-- src/
-       `-- fidnessrutinas/ (codigo fuente Java)
-
-La misma carpeta FidnessRutinas se abre con File > Open Project para
-revisar el codigo fuente o se utiliza con java -jar para ejecutar el JAR
-ya compilado.
-
 REQUISITOS
 ----------
 1. Apache NetBeans.
@@ -81,29 +24,39 @@ instalado en esta computadora. Por eso ambos pasos son necesarios.
 
 1. Abra MySQL Workbench e ingrese a su conexion local.
 2. Seleccione File > Open SQL Script.
-3. Abra database/schema.sql y presione el boton del rayo para ejecutarlo.
+3. En la ventana para seleccionar el archivo, entre a la carpeta del
+   proyecto descomprimido y abra esta ruta exacta:
+
+   FidnessRutinas\database\schema.sql
+
+   Presione el boton del rayo para ejecutar todo el archivo.
 4. En el panel Schemas, actualice la lista y compruebe que aparezca:
 
    fidness_rutinas
 
-5. Localice database.properties.example en la carpeta principal del
-   proyecto.
-6. Si la carpeta nbproject/private no existe, creela.
-7. Copie database.properties.example dentro de nbproject/private y cambie
-   el nombre de la copia a:
+5. Abra en el Explorador de Windows esta carpeta incluida en el ZIP:
 
-   database.properties
+   FidnessRutinas\nbproject\private
 
-8. Abra database.properties con un editor de texto. Su contenido debe
+6. Dentro de private ya se encuentra el archivo:
+
+   FidnessRutinas\nbproject\private\database.properties.example
+
+7. Haga una copia de database.properties.example en esa misma carpeta.
+8. Cambie el nombre de la copia para que su ruta final sea exactamente:
+
+   FidnessRutinas\nbproject\private\database.properties
+
+9. Abra database.properties con un editor de texto. Su contenido debe
    quedar similar al siguiente ejemplo:
 
    url=jdbc:mysql://127.0.0.1:3306/fidness_rutinas?serverTimezone=America/Costa_Rica&useSSL=false&allowPublicKeyRetrieval=true
    usuario=root
    contrasena=SU_CONTRASENA_DE_MYSQL
 
-9. Sustituya root y SU_CONTRASENA_DE_MYSQL por el mismo usuario y
-   contrasena que utiliza para ingresar a MySQL Workbench. Guarde el
-   archivo y confirme que no termine en .txt.
+10. Sustituya root y SU_CONTRASENA_DE_MYSQL por el mismo usuario y
+    contrasena que utiliza para ingresar a MySQL Workbench. Guarde el
+    archivo y confirme que su nombre no termine en .txt.
 
 IMPORTANTE: schema.sql no puede crear database.properties porque el
 usuario y la contrasena de MySQL son diferentes en cada computadora.
@@ -118,12 +71,10 @@ EJECUTAR DESDE NETBEANS
 EJECUTAR EL PAQUETE COMPILADO
 -----------------------------
 1. Utilice la misma carpeta FidnessRutinas extraida del ZIP completo.
-2. Ejecute database/schema.sql siguiendo los pasos anteriores.
-3. Copie database.properties.example a nbproject/private y cambie el
-   nombre de la copia a database.properties.
-4. Abra el archivo, escriba sus credenciales locales de MySQL y guardelo.
-5. Abra una terminal en la carpeta FidnessRutinas.
-6. Ejecute:
+2. Complete primero todos los pasos de la seccion PREPARAR MYSQL.
+3. Abra una terminal en la carpeta FidnessRutinas. Es la carpeta que
+   contiene dist, database, nbproject y src.
+4. Ejecute:
 
    java -jar dist/FidnessRutinas.jar
 
