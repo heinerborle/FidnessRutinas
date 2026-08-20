@@ -1,6 +1,65 @@
 FIDNESSRUTINAS - INSTRUCCIONES DE USO
 ====================================
 
+ARCHIVOS PREPARADOS PARA SUBIR
+------------------------------
+Las siguientes rutas parten de la carpeta Entrega Final de este trabajo:
+
+1. Documento escrito:
+
+   salida/Proyecto FidnessRutinas - Heiner Borbon Leon.docx
+
+2. Proyecto completo para abrir en NetBeans:
+
+   salida/codigo/FidnessRutinas-Proyecto-NetBeans.zip
+
+3. Paquete ya compilado para ejecutar fuera de NetBeans:
+
+   salida/codigo/FidnessRutinas-Ejecutable.zip
+
+El archivo principal de codigo que debe subirse es
+FidnessRutinas-Proyecto-NetBeans.zip. El ZIP ejecutable se puede adjuntar
+como apoyo para facilitar la revision. INSTRUCCIONES.txt ya esta incluido
+dentro de ambos ZIP.
+
+No se debe subir nbproject/private/database.properties porque contiene las
+credenciales privadas de MySQL de la computadora donde se ejecuta el
+programa. Cada persona crea su propia copia siguiendo esta guia.
+
+COMO INTERPRETAR LAS RUTAS DE ESTA GUIA
+---------------------------------------
+Todas las rutas indicadas desde la seccion REQUISITOS parten de la carpeta
+principal del proyecto descomprimido. Por ejemplo:
+
+   database/schema.sql
+
+significa entrar primero a FidnessRutinas, despues a database y finalmente
+abrir schema.sql. En la copia de trabajo de este equipo, la ruta es:
+
+   codigo/FidnessRutinas/database/schema.sql
+
+Al descomprimir FidnessRutinas-Proyecto-NetBeans.zip se obtiene esta
+estructura:
+
+   FidnessRutinas/
+   |-- build.xml
+   |-- manifest.mf
+   |-- INSTRUCCIONES.txt
+   |-- database.properties.example
+   |-- database/
+   |   `-- schema.sql
+   |-- lib/
+   |   `-- mysql-connector-j-9.7.0.jar
+   |-- nbproject/
+   |   |-- project.xml
+   |   `-- project.properties
+   `-- src/
+       `-- fidnessrutinas/ (codigo fuente Java)
+
+El ZIP de NetBeans contiene el codigo fuente y es el que se abre con
+File > Open Project. El ZIP ejecutable contiene el JAR ya compilado y se
+utiliza solamente con el comando java -jar explicado mas adelante.
+
 REQUISITOS
 ----------
 1. Apache NetBeans.
@@ -9,10 +68,12 @@ REQUISITOS
 
 ABRIR EL PROYECTO EN NETBEANS
 -----------------------------
-1. Descomprima el archivo del proyecto.
+1. Descomprima FidnessRutinas-Proyecto-NetBeans.zip.
 2. Abra NetBeans.
 3. Seleccione File > Open Project.
-4. Seleccione la carpeta FidnessRutinas.
+4. Seleccione la carpeta FidnessRutinas que contiene build.xml, nbproject
+   y src. No seleccione solamente la carpeta src.
+5. NetBeans debe mostrar el proyecto FidnessRutinas en el panel Projects.
 
 PREPARAR MYSQL
 --------------
