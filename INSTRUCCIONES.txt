@@ -22,6 +22,12 @@ El archivo SQL crea la base de datos y sus tablas. El archivo
 database.properties le indica al programa como conectarse al MySQL
 instalado en esta computadora. Por eso ambos pasos son necesarios.
 
+El ZIP no contiene una copia de la base de datos instalada en la
+computadora del estudiante ni archivos internos de MySQL. schema.sql se
+incluye porque contiene solamente las instrucciones necesarias para que
+el profesor pueda crear en su propio MySQL la base fidness_rutinas, sus
+tablas y los datos iniciales de prueba.
+
 1. Abra MySQL Workbench e ingrese a su conexion local.
 2. Seleccione File > Open SQL Script.
 3. En la ventana para seleccionar el archivo, entre a la carpeta del
@@ -54,12 +60,34 @@ instalado en esta computadora. Por eso ambos pasos son necesarios.
    usuario=root
    contrasena=SU_CONTRASENA_DE_MYSQL
 
+La copia es necesaria porque database.properties.example es una plantilla
+sin credenciales privadas. El programa busca especificamente el archivo
+llamado database.properties. Cada computadora debe crear su propia copia
+con las credenciales de su instalacion local de MySQL.
+
 10. Sustituya root y SU_CONTRASENA_DE_MYSQL por el mismo usuario y
-    contrasena que utiliza para ingresar a MySQL Workbench. Guarde el
-    archivo y confirme que su nombre no termine en .txt.
+    contrasena que utiliza para ingresar a MySQL Workbench. Normalmente no
+    es necesario cambiar la linea url.
+11. Guarde el archivo y confirme que su nombre no termine en .txt.
+
+Ejemplo si en MySQL Workbench se utiliza el usuario root y la contrasena
+ClaveMysql123:
+
+   usuario=root
+   contrasena=ClaveMysql123
+
+Ejemplo si el usuario root de MySQL no tiene contrasena:
+
+   usuario=root
+   contrasena=
+
+Los usuarios heiner/1234 y admin/admin pertenecen a FidnessRutinas. No se
+deben escribir como credenciales de MySQL en database.properties.
 
 IMPORTANTE: schema.sql no puede crear database.properties porque el
-usuario y la contrasena de MySQL son diferentes en cada computadora.
+usuario y la contrasena de MySQL son diferentes en cada computadora. El
+archivo database.properties creado localmente tampoco debe enviarse ni
+subirse al repositorio.
 
 EJECUTAR DESDE NETBEANS
 -----------------------

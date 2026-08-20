@@ -1,6 +1,7 @@
 build/
 dist/
-nbproject/private/
+nbproject/private/*
+!nbproject/private/database.properties.example
 *.class
 *.jar
 !lib/
