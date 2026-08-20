@@ -9,18 +9,13 @@ Las siguientes rutas parten de la carpeta Entrega Final de este trabajo:
 
    salida/Proyecto FidnessRutinas - Heiner Borbon Leon.docx
 
-2. Proyecto completo para abrir en NetBeans:
+2. Proyecto completo para abrir en NetBeans o ejecutar directamente:
 
-   salida/codigo/FidnessRutinas-Proyecto-NetBeans.zip
+   salida/codigo/FidnessRutinas-Proyecto-Completo.zip
 
-3. Paquete ya compilado para ejecutar fuera de NetBeans:
-
-   salida/codigo/FidnessRutinas-Ejecutable.zip
-
-El archivo principal de codigo que debe subirse es
-FidnessRutinas-Proyecto-NetBeans.zip. El ZIP ejecutable se puede adjuntar
-como apoyo para facilitar la revision. INSTRUCCIONES.txt ya esta incluido
-dentro de ambos ZIP.
+Este unico ZIP contiene tanto el proyecto importable de NetBeans como el
+ejecutable compilado. No es necesario subir dos paquetes de codigo.
+INSTRUCCIONES.txt ya esta incluido dentro del ZIP.
 
 No se debe subir nbproject/private/database.properties porque contiene las
 credenciales privadas de MySQL de la computadora donde se ejecuta el
@@ -38,7 +33,7 @@ abrir schema.sql. En la copia de trabajo de este equipo, la ruta es:
 
    codigo/FidnessRutinas/database/schema.sql
 
-Al descomprimir FidnessRutinas-Proyecto-NetBeans.zip se obtiene esta
+Al descomprimir FidnessRutinas-Proyecto-Completo.zip se obtiene esta
 estructura:
 
    FidnessRutinas/
@@ -48,6 +43,9 @@ estructura:
    |-- database.properties.example
    |-- database/
    |   `-- schema.sql
+   |-- dist/
+   |   |-- FidnessRutinas.jar
+   |   `-- lib/mysql-connector-j-9.7.0.jar
    |-- lib/
    |   `-- mysql-connector-j-9.7.0.jar
    |-- nbproject/
@@ -56,9 +54,9 @@ estructura:
    `-- src/
        `-- fidnessrutinas/ (codigo fuente Java)
 
-El ZIP de NetBeans contiene el codigo fuente y es el que se abre con
-File > Open Project. El ZIP ejecutable contiene el JAR ya compilado y se
-utiliza solamente con el comando java -jar explicado mas adelante.
+La misma carpeta FidnessRutinas se abre con File > Open Project para
+revisar el codigo fuente o se utiliza con java -jar para ejecutar el JAR
+ya compilado.
 
 REQUISITOS
 ----------
@@ -68,7 +66,7 @@ REQUISITOS
 
 ABRIR EL PROYECTO EN NETBEANS
 -----------------------------
-1. Descomprima FidnessRutinas-Proyecto-NetBeans.zip.
+1. Descomprima FidnessRutinas-Proyecto-Completo.zip.
 2. Abra NetBeans.
 3. Seleccione File > Open Project.
 4. Seleccione la carpeta FidnessRutinas que contiene build.xml, nbproject
@@ -119,13 +117,13 @@ EJECUTAR DESDE NETBEANS
 
 EJECUTAR EL PAQUETE COMPILADO
 -----------------------------
-1. Descomprima FidnessRutinas-Ejecutable.zip.
+1. Utilice la misma carpeta FidnessRutinas extraida del ZIP completo.
 2. Ejecute database/schema.sql siguiendo los pasos anteriores.
-3. Entre a nbproject/private.
-4. Cambie el nombre de database.properties.example a database.properties.
-5. Abra el archivo, escriba sus credenciales locales de MySQL y guardelo.
-6. Abra una terminal en la carpeta FidnessRutinas-Ejecutable.
-7. Ejecute:
+3. Copie database.properties.example a nbproject/private y cambie el
+   nombre de la copia a database.properties.
+4. Abra el archivo, escriba sus credenciales locales de MySQL y guardelo.
+5. Abra una terminal en la carpeta FidnessRutinas.
+6. Ejecute:
 
    java -jar dist/FidnessRutinas.jar
 
