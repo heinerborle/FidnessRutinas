@@ -5,7 +5,8 @@ REQUISITOS
 ----------
 1. Apache NetBeans.
 2. JDK 26.
-3. MySQL Server en ejecución.
+3. MySQL Server en ejecucion.
+4. MySQL Workbench o un cliente equivalente para ejecutar archivos SQL.
 
 ABRIR EL PROYECTO EN NETBEANS
 -----------------------------
@@ -26,7 +27,8 @@ El ZIP no contiene una copia de la base de datos instalada en la
 computadora del estudiante ni archivos internos de MySQL. schema.sql se
 incluye porque contiene solamente las instrucciones necesarias para que
 el profesor pueda crear en su propio MySQL la base fidness_rutinas, sus
-tablas y los datos iniciales de prueba.
+cuatro tablas y sus relaciones. Los usuarios y ejercicios iniciales los
+crea la aplicacion durante el primer arranque si las tablas estan vacias.
 
 1. Abra MySQL Workbench e ingrese a su conexion local.
 2. Seleccione File > Open SQL Script.
@@ -115,6 +117,64 @@ Usuario regular:
 Usuario administrador:
   usuario: admin
   contrasena: admin
+
+PRUEBA COMPLETA DEL PROGRAMA
+----------------------------
+1. Ejecute el proyecto desde NetBeans o con el JAR. Debe aparecer la
+   ventana FidnessRutinas - Ingreso y el servidor debe utilizar el puerto
+   5050.
+2. Intente ingresar con datos incorrectos y compruebe que la aplicacion
+   rechace el acceso.
+3. Ingrese con heiner y 1234. Debe aparecer el catalogo de ejercicios.
+4. Seleccione un ejercicio de la tabla y compruebe que aparezca su detalle.
+5. Seleccione una categoria, presione Filtrar y compruebe que la tabla
+   muestre solamente esa categoria. Presione Ver todos para recuperar el
+   catalogo completo.
+6. Seleccione un ejercicio y presione Agregar a rutina. Debe aparecer en
+   la lista Ejercicios de la rutina.
+7. Intente agregar el mismo ejercicio otra vez. La aplicacion debe impedir
+   el duplicado.
+8. Agregue otro ejercicio, seleccionelo en la lista de la rutina y presione
+   Eliminar seleccionado. Debe desaparecer de la rutina.
+9. Deje al menos un ejercicio agregado y presione Exportar rutina. Guarde
+   el archivo TXT y abralo para comprobar que contiene el resumen.
+10. Compruebe que el usuario heiner no tenga el boton Registrar ejercicio.
+11. Cierre la aplicacion, ejecutela de nuevo e ingrese con heiner y 1234.
+    El ejercicio dejado en la rutina debe continuar guardado.
+12. Cierre la aplicacion, ejecutela nuevamente e ingrese con admin y admin.
+    Debe aparecer el boton Registrar ejercicio.
+13. Presione Registrar ejercicio y registre un ejercicio de fuerza con un
+    nombre nuevo, descripcion, categoria, dificultad, series y
+    repeticiones. Al guardar, debe aparecer en la tabla.
+14. Registre un ejercicio de tipo cardio. El formulario debe solicitar
+    minutos y asignar la categoria CARDIO.
+15. Seleccione los ejercicios registrados y compruebe sus detalles.
+
+PRUEBA CLIENTE-SERVIDOR
+-----------------------
+1. Mantenga abierta una primera instancia de FidnessRutinas.
+2. Abra otra terminal en la carpeta FidnessRutinas y ejecute de nuevo:
+
+   java -jar dist/FidnessRutinas.jar
+
+3. La segunda instancia debe utilizar el servidor que ya escucha en el
+   puerto 5050 y mostrar otra ventana de ingreso.
+4. Ingrese con heiner en una ventana y con admin en la otra. Compruebe que
+   ambas puedan consultar el catalogo y sus respectivas rutinas.
+5. Cierre primero la segunda instancia y luego la primera.
+
+COMPROBAR LOS DATOS EN MYSQL
+----------------------------
+En MySQL Workbench ejecute estas consultas despues de las pruebas:
+
+   USE fidness_rutinas;
+   SELECT * FROM usuario;
+   SELECT * FROM ejercicio;
+   SELECT * FROM rutina;
+   SELECT * FROM rutina_ejercicio;
+
+Deben aparecer los usuarios iniciales, los ejercicios registrados y las
+relaciones de las rutinas utilizadas durante la prueba.
 
 FUNCIONES PRINCIPALES
 ---------------------
